@@ -1,0 +1,12 @@
+node_modules
+package-lock.json
+/dist
+/release
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+*.tsbuildinfo
+
+components.d.ts

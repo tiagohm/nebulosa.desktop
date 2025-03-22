@@ -1,0 +1,80 @@
+{
+	"$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/refs/heads/master/packages/app-builder-lib/scheme.json",
+	"asar": true,
+	"appId": "dev.tiagohm.nebulosa",
+	"productName": "Nebulosa",
+	"artifactName": "${name}-${version}-${os}-${arch}.${ext}",
+	"electronLanguages": ["en-US"],
+	"directories": {
+		"output": "release/"
+	},
+	"files": [
+		"**/*",
+		"!**/dist/**",
+		"!**/web/**",
+		"!**/.vscode/**",
+		"!**/*.ts",
+		"!**/*.mjs",
+		"!*.map",
+		"!.editorconfig",
+		"!*.tsbuildinfo",
+		"!.npmrc",
+		"!biome.json",
+		"!**/tsconfig*.json",
+		"!LICENSE",
+		"!**/*.md",
+		"!**/*.bmp",
+		"!**/*.ico",
+		"!**/*.icns",
+		"!package-lock.json",
+		{
+			"from": "./dist",
+			"filter": ["**/*"]
+		}
+	],
+	"fileAssociations": [
+		{
+			"ext": "fit",
+			"name": "Astronomical Image",
+			"role": "Viewer",
+			"description": "Nebulosa"
+		},
+		{
+			"ext": "fits",
+			"name": "Astronomical Image",
+			"role": "Viewer",
+			"description": "Nebulosa"
+		},
+		{
+			"ext": "xisf",
+			"name": "Astronomical Image",
+			"role": "Viewer",
+			"description": "Nebulosa"
+		}
+	],
+	"win": {
+		"icon": "dist/browser/assets/icons/nebulosa.ico",
+		"target": ["portable", "msi"]
+	},
+	"portable": {
+		"splashImage": "dist/browser/assets/images/splash.bmp",
+		"artifactName": "${name}-${version}-${os}-${arch}-portable.${ext}"
+	},
+	"msi": {
+		"oneClick": false,
+		"runAfterFinish": false
+	},
+	"mac": {
+		"icon": "dist/browser/assets/icons/nebulosa.icns",
+		"target": ["dmg"]
+	},
+	"linux": {
+		"icon": "dist/browser/assets/icons/nebulosa.png",
+		"category": "Science",
+		"target": ["AppImage", "deb", "rpm", "pacman"],
+		"mimeTypes": ["application/fits", "image/fits", "image/x-xisf"]
+	},
+	"rpm": {
+		"depends": ["/usr/lib64/libuuid.so.1"]
+	}
+}

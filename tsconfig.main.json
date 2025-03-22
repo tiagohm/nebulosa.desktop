@@ -1,0 +1,33 @@
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"strict": true,
+		"outDir": "./dist",
+		"module": "CommonJS",
+		"sourceMap": false,
+		"declaration": false,
+		"moduleResolution": "node",
+		"emitDecoratorMetadata": false,
+		"experimentalDecorators": false,
+		"resolveJsonModule": true,
+		"allowSyntheticDefaultImports": true,
+		"noUncheckedIndexedAccess": false,
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noPropertyAccessFromIndexSignature": true,
+		"noFallthroughCasesInSwitch": true,
+		"allowJs": true,
+		"skipLibCheck": true,
+		"incremental": false,
+		"target": "ESNext",
+		"typeRoots": ["node_modules/@types"],
+		"lib": ["ESNext", "dom"],
+		"isolatedModules": true,
+		"useDefineForClassFields": true,
+		"tsBuildInfoFile": "./tsconfig.main.tsbuildinfo"
+	},
+	"exclude": ["node_modules"],
+	"include": ["main"]
+}
