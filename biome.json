@@ -1,5 +1,13 @@
 {
 	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"files": {
+		"ignoreUnknown": true
+	},
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
 	"formatter": {
 		"enabled": true,
 		"formatWithErrors": false,
@@ -30,7 +38,6 @@
 	},
 	"linter": {
 		"enabled": true,
-		"ignore": ["**/*.data.ts"],
 		"rules": {
 			"style": {
 				"noInferrableTypes": "off",

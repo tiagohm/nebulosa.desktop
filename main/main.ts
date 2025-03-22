@@ -27,7 +27,7 @@ function createWindow() {
 		return { action: 'deny' }
 	})
 
-	win.loadFile(join(__dirname, 'home.html'))
+	win.loadFile(join(__dirname, 'web/src/pages/home/index.html'))
 }
 
 app.whenReady().then(() => {

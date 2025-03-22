@@ -7,8 +7,9 @@
 	"scripts": {
 		"build:main": "tsc -p tsconfig.main.json",
 		"build:web": "vite build",
-		"start": "npm run build:web && npm run build:main && electron dist/main.js",
-		"build": "npm run build:web && npm run build:main && electron-builder build --publish=never"
+		"build": "npm run build:web && npm run build:main",
+		"start": "npm run build && electron dist/main.js",
+		"package": "npm run build && electron-builder build --publish=never"
 	},
 	"keywords": ["astronomy", "indi"],
 	"homepage": "https://tiagohm.github.io/nebulosa",
@@ -26,7 +27,6 @@
 		"@tsconfig/node22": "22",
 		"@types/node": "latest",
 		"@vitejs/plugin-vue": "5.2.3",
-		"@vitejs/plugin-vue-jsx": "4.1.2",
 		"@vue/tsconfig": "0.7.0",
 		"electron": "35.0.3",
 		"electron-builder": "26.0.11",
@@ -38,8 +38,6 @@
 		"typescript": "5.8.2",
 		"unplugin-vue-components": "28.4.1",
 		"vite": "6.2.2",
-		"vite-plugin-vue-devtools": "7.7.2",
-		"vue": "3.5.13",
-		"vue-tsc": "2.2.8"
+		"vue": "3.5.13"
 	}
 }
