@@ -32,6 +32,7 @@
 		"electron": "35.0.3",
 		"electron-builder": "26.0.11",
 		"npm-run-all2": "7.0.2",
+		"pinia": "3.0.1",
 		"primevue": "4.3.2",
 		"tailwindcss": "4.0.15",
 		"tailwindcss-primeui": "0.5.1",

@@ -199,5 +199,23 @@ export const AppTheme = definePreset(Aura, {
 				padding: '0.1rem 0.5rem',
 			},
 		},
+		toast: {
+			colorScheme: {
+                dark: {
+                    success: {
+                        borderColor: 'transparent',
+                    },
+                    info: {
+                        borderColor: 'transparent',
+                    },
+                    warn: {
+                        borderColor: 'transparent',
+                    },
+                    error: {
+                        borderColor: 'transparent',
+                    },
+                }
+            }
+		},
 	},
 } as Preset<AuraBaseDesignTokens>)

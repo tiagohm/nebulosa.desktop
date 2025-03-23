@@ -11,13 +11,21 @@ html {
 }
 
 input.p-inputtext {
-    max-width: 100%;
+    @apply max-w-full;
 }
 
 .p-component.p-select-overlay {
-    margin-top: 4px;
+    @apply mt-1.5;
 }
 
 .p-component.p-toast {
-    max-width: 90vw;
+    @apply max-w-[90vw];
+}
+
+.draggable-region {
+	-webkit-app-region: drag;
+}
+
+.pixelated {
+	image-rendering: pixelated;
 }

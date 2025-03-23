@@ -1,3 +1,4 @@
+import { createPinia } from 'pinia'
 import PrimeVue from 'primevue/config'
 import ToastService from 'primevue/toastservice'
 import Tooltip from 'primevue/tooltip'
@@ -7,6 +8,7 @@ import { AppTheme } from './app.theme'
 export interface MountAppOptions {
 	rootContainer?: string | Element
 	toast?: boolean
+	pinia?: boolean
 }
 
 export function mountApp(component: Component, options?: MountAppOptions) {
@@ -28,6 +30,7 @@ export function mountApp(component: Component, options?: MountAppOptions) {
 	})
 
 	if (options?.toast) app.use(ToastService)
+	if (options?.pinia) app.use(createPinia())
 
 	app.directive('tooltip', Tooltip)
 

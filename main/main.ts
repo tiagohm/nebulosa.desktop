@@ -13,6 +13,7 @@ function createWindow() {
 		height: 600,
 		backgroundColor: '#121212',
 		autoHideMenuBar: true,
+		frame: false,
 		webPreferences: {
 			nodeIntegration: true,
 			allowRunningInsecureContent: false,
@@ -22,7 +23,7 @@ function createWindow() {
 		},
 	})
 
-    win.maximize()
+	win.maximize()
 
 	win.webContents.setWindowOpenHandler(({ url }) => {
 		shell.openExternal(url)
