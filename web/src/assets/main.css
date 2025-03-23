@@ -1,9 +1,15 @@
 @import "tailwindcss";
 @import "tailwindcss-primeui";
+@import "@mdi/font/css/materialdesignicons.css";
 
 @custom-variant dark (&:where(.dark-mode, .dark-mode *));
 
 html {
     @apply h-screen;
     background: #121212;
+    font-size: 14px;
+}
+
+input.p-inputtext {
+    max-width: 100%;
 }

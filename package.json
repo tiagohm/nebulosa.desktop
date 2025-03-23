@@ -21,6 +21,7 @@
 	"dependencies": {},
 	"devDependencies": {
 		"@biomejs/biome": "latest",
+		"@mdi/font": "7.4.47",
 		"@primeuix/themes": "1.0.0",
 		"@primevue/auto-import-resolver": "4.3.2",
 		"@tailwindcss/vite": "4.0.15",
@@ -31,7 +32,6 @@
 		"electron": "35.0.3",
 		"electron-builder": "26.0.11",
 		"npm-run-all2": "7.0.2",
-		"pinia": "3.0.1",
 		"primevue": "4.3.2",
 		"tailwindcss": "4.0.15",
 		"tailwindcss-primeui": "0.5.1",

@@ -25,9 +25,9 @@ export default defineConfig({
 				home: resolve(__dirname, 'home/index.html'),
 			},
 			output: {
-				entryFileNames: '[name].[hash].js',
+				entryFileNames: '[name].js',
 				chunkFileNames: '[name].[hash].js',
-				assetFileNames: '[name].[hash][extname]',
+				assetFileNames: '[name][extname]',
 			},
 		},
 	},

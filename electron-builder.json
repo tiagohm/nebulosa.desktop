@@ -29,7 +29,7 @@
 		"!package-lock.json",
 		{
 			"from": "./dist",
-			"filter": ["**/*"]
+			"filter": ["**/*", "!**/*.ttf", "!**/*.eot", "!**/*.woff"]
 		}
 	],
 	"fileAssociations": [
