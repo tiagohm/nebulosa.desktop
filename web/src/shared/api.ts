@@ -1,48 +1,50 @@
-export type ConnectionType = 'INDI'
-
-export interface Connect {
-	host: string
-	port: number
-	type: ConnectionType
-}
-
-export interface ConnectionStatus extends Connect {
-	id: string
-	ip?: string
-}
+import type { Connect, ConnectionStatus } from './types'
 
 export function connect(req: Connect) {
-	return POST<ConnectionStatus>('connections', req)
+	return doPost<ConnectionStatus>('connections', req)
+}
+
+export function disconnect(id: string) {
+	return doDelete(`connections/${id}`)
+}
+
+export function connections() {
+	return doGet<ConnectionStatus[]>('connections')
 }
 
 const DEFAULT_HEADERS = new Headers({ 'Content-Type': 'application/json' })
 
 const DEFAULT_URL = 'http://localhost:7000'
 
-async function GET<T>(path: string) {
+function doFetch(path: string, init?: RequestInit) {
 	const url = localStorage.getItem('api.url') || DEFAULT_URL
-	const response = await fetch(`${url}/${path}`, { method: 'GET', redirect: 'follow' })
-	const text = await response.text()
+	return fetch(`${url}/${path}`, init)
+}
+
+function makeResponse<T>(text: string) {
 	return text ? (JSON.parse(text) as T) : undefined
 }
 
-export async function POST<T>(path: string, body?: unknown) {
-	const url = localStorage.getItem('api.url') || DEFAULT_URL
+export async function doGet<T>(path: string) {
+	const response = await doFetch(path, { method: 'GET', redirect: 'follow' })
+	const text = await response.text()
+	return makeResponse<T>(text)
+}
+
+export async function doPost<T>(path: string, body?: unknown) {
 	const raw = body === undefined || body === null ? undefined : JSON.stringify(body)
-	const response = await fetch(`${url}/${path}`, { method: 'POST', body: raw, headers: DEFAULT_HEADERS, redirect: 'follow' })
+	const response = await doFetch(path, { method: 'POST', body: raw, headers: DEFAULT_HEADERS, redirect: 'follow' })
 	const text = await response.text()
-	return text ? (JSON.parse(text) as T) : undefined
+	return makeResponse<T>(text)
 }
 
-async function PUT<T>(path: string, body?: unknown) {
-	const url = localStorage.getItem('api.url') || DEFAULT_URL
+export async function doPut<T>(path: string, body?: unknown) {
 	const raw = body === undefined || body === null ? undefined : JSON.stringify(body)
-	const response = await fetch(`${url}/${path}`, { method: 'PUT', body: raw, headers: DEFAULT_HEADERS, redirect: 'follow' })
+	const response = await doFetch(path, { method: 'PUT', body: raw, headers: DEFAULT_HEADERS, redirect: 'follow' })
 	const text = await response.text()
-	return text ? (JSON.parse(text) as T) : undefined
+	return makeResponse<T>(text)
 }
 
-function DELETE(path: string) {
-	const url = localStorage.getItem('api.url') || DEFAULT_URL
-	return fetch(`${url}/${path}`, { method: 'DELETE', redirect: 'follow' })
+export function doDelete(path: string) {
+	return doFetch(path, { method: 'DELETE', redirect: 'follow' })
 }

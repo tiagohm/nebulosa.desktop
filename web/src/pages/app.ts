@@ -1,9 +1,15 @@
 import PrimeVue from 'primevue/config'
+import ToastService from 'primevue/toastservice'
 import Tooltip from 'primevue/tooltip'
 import { type Component, createApp } from 'vue'
 import { AppTheme } from './app.theme'
 
-export function mountApp(component: Component, rootContainer: string | Element = '#app') {
+export interface MountAppOptions {
+	rootContainer?: string | Element
+	toast?: boolean
+}
+
+export function mountApp(component: Component, options?: MountAppOptions) {
 	const app = createApp(component)
 
 	app.use(PrimeVue, {
@@ -21,9 +27,11 @@ export function mountApp(component: Component, rootContainer: string | Element =
 		},
 	})
 
+	if (options?.toast) app.use(ToastService)
+
 	app.directive('tooltip', Tooltip)
 
-	app.mount(rootContainer)
+	app.mount(options?.rootContainer || '#app')
 
 	return app
 }

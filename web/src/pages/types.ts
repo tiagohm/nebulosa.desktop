@@ -1,12 +1,14 @@
-import type { Connect } from '../shared/api'
+import type { Connect, ConnectionStatus } from '@/shared/types'
 
 export interface Connection extends Connect {
-    id: number
+	id: number
 	name: string
+	connectedAt?: number
+	status?: ConnectionStatus
 }
 
 export const DEFAULT_CONNECTION: Connection = {
-    id: 0,
+	id: Date.now(),
 	name: 'Local',
 	host: 'localhost',
 	port: 7624,

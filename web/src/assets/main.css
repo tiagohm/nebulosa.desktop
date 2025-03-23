@@ -13,3 +13,11 @@ html {
 input.p-inputtext {
     max-width: 100%;
 }
+
+.p-component.p-select-overlay {
+    margin-top: 4px;
+}
+
+.p-component.p-toast {
+    max-width: 90vw;
+}

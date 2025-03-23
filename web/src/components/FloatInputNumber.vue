@@ -33,6 +33,7 @@
     <FloatLabel variant="on">
         <InputNumber size="small"
                      :show-buttons="true"
+                     :allow-empty="false"
                      class="w-full"
                      v-bind="$attrs"
                      ref="input"

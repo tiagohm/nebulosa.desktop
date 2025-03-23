@@ -194,5 +194,10 @@ export const AppTheme = definePreset(Aura, {
 				filledBackground: '{surface.600}',
 			},
 		},
+		tag: {
+			root: {
+				padding: '0.1rem 0.5rem',
+			},
+		},
 	},
 } as Preset<AuraBaseDesignTokens>)
