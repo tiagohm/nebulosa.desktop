@@ -18,20 +18,20 @@ export const useConnectionStore = defineStore('connection', () => {
 	const toast = useToast()
 
 	// Show dialog to add new connection
-	function newConnection() {
+	function add() {
 		edited.value = { ...DEFAULT_CONNECTION, id: 0 }
 		showDialog.value = true
 	}
 
 	// Show dialog to edit the connection
-	function editConnection(connection: Connection, event?: MouseEvent) {
+	function edit(connection: Connection, event?: MouseEvent) {
 		event?.stopImmediatePropagation()
 		edited.value = { ...connection }
 		showDialog.value = true
 	}
 
 	// Add or update the edited connection and save it
-	function saveConnection() {
+	function save() {
 		const connection = edited.value!
 
 		if (connection.id === 0) {
@@ -56,7 +56,7 @@ export const useConnectionStore = defineStore('connection', () => {
 	}
 
 	// Delete the connection
-	function deleteConnection(connection: Connection, event?: MouseEvent) {
+	function remove(connection: Connection, event?: MouseEvent) {
 		event?.stopImmediatePropagation()
 
 		if (connections.value.length === 1) {
@@ -106,10 +106,10 @@ export const useConnectionStore = defineStore('connection', () => {
 		connecting,
 		showDialog,
 		edited,
-		newConnection,
-		editConnection,
-		saveConnection,
-		deleteConnection,
+		add,
+		edit,
+		save,
+		remove,
 		connectOrDisconnect,
 	}
 })

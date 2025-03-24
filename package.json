@@ -7,8 +7,10 @@
 	"scripts": {
 		"build:main": "tsc -p tsconfig.main.json",
 		"build:web": "vite build",
+		"build:web-dev": "vite build --watch",
 		"build": "npm run build:web && npm run build:main",
-		"start": "npm run build && electron dist/main.js",
+		"electron": "electron dist/main.js",
+		"start": "npm run build && run-p electron build:web-dev",
 		"package": "npm run build && electron-builder build --publish=never"
 	},
 	"keywords": ["astronomy", "indi"],

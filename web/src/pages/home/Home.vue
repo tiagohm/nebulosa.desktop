@@ -8,9 +8,10 @@
         import * as api from '@/shared/api'
         import { formatDate } from '@/shared/utils'
         import { useConnectionStore } from '@/stores/connection.store'
-        import { onMounted } from 'vue'
+        import { onMounted, useTemplateRef } from 'vue'
 
         const connection = useConnectionStore()
+        const menuPopover = useTemplateRef('menuPopover')
 
         // Choose the active connection if it exists
         async function chooseActiveConnection() {
@@ -56,7 +57,7 @@
                     size="small"
                     severity="success"
                     v-tooltip.bottom="'New'"
-                    @click="connection.newConnection()">
+                    @click="connection.add()">
                 <i class="mdi mdi-plus" />
             </Button>
 
@@ -93,11 +94,11 @@
                             <IconButton icon="pencil"
                                         severity="info"
                                         v-tooltip.bottom="'Edit'"
-                                        @click="connection.editConnection(item.option, $event)" />
+                                        @click="connection.edit(item.option, $event)" />
                             <IconButton icon="delete"
                                         severity="danger"
                                         v-tooltip.bottom="'Remove'"
-                                        @click="connection.deleteConnection(item.option, $event)" />
+                                        @click="connection.remove(item.option, $event)" />
                         </div>
                     </div>
                 </template>
@@ -108,6 +109,112 @@
             <ConnectButton :connected="connection.connected"
                            :disabled="connection.connecting"
                            @click="connection.connectOrDisconnect()" />
+
+            <!-- Menu -->
+
+            <IconButton icon="menu"
+                        @click="menuPopover?.toggle($event)"
+                        size="large"
+                        v-tooltip.bottom="'Show menu'" />
+
+            <IconButton icon="image-plus"
+                        size="large"
+                        v-tooltip.bottom="'Open image'" />
+
+            <Popover ref="menuPopover">
+                <div class="grid grid-cols-6">
+                    <Button v-tooltip.bottom="'Camera'"
+                            :text="true">
+                        <img src="@/assets/images/camera.png"
+                             width="28" />
+                    </Button>
+                    <Button v-tooltip.bottom="'Mount'"
+                            :text="true">
+                        <img src="@/assets/images/telescope.png"
+                             width="28" />
+                    </Button>
+                    <Button v-tooltip.bottom="'Filter Wheel'"
+                            :text="true">
+                        <img src="@/assets/images/filter-wheel.png"
+                             width="28" />
+                    </Button>
+                    <Button v-tooltip.bottom="'Focuser'"
+                            :text="true">
+                        <img src="@/assets/images/focus.png"
+                             width="28" />
+                    </Button>
+                    <Button v-tooltip.bottom="'Rotator'"
+                            :text="true">
+                        <img src="@/assets/images/rotate.png"
+                             width="28" />
+                    </Button>
+                    <Button v-tooltip.bottom="'Light Box'"
+                            :text="true">
+                        <img src="@/assets/images/light.png"
+                             width="28" />
+                    </Button>
+                    <Button v-tooltip.bottom="'Dust Cap'"
+                            :text="true">
+                        <img src="@/assets/images/lid.png"
+                             width="28" />
+                    </Button>
+                    <Button v-tooltip.bottom="'Guider'"
+                            :text="true">
+                        <img src="@/assets/images/guider.png"
+                             width="28" />
+                    </Button>
+                    <Button v-tooltip.bottom="'Sky Atlas'"
+                            :text="true">
+                        <img src="@/assets/images/atlas.png"
+                             width="28" />
+                    </Button>
+                    <Button v-tooltip.bottom="'Alignment'"
+                            :text="true">
+                        <img src="@/assets/images/star.png"
+                             width="28" />
+                    </Button>
+                    <Button v-tooltip.bottom="'Sequencer'"
+                            :text="true">
+                        <img src="@/assets/images/sequencer.png"
+                             width="28" />
+                    </Button>
+                    <Button v-tooltip.bottom="'Framing'"
+                            :text="true">
+                        <img src="@/assets/images/framing.png"
+                             width="28" />
+                    </Button>
+                    <Button v-tooltip.bottom="'Auto Focus'"
+                            :text="true">
+                        <img src="@/assets/images/auto-focus.png"
+                             width="28" />
+                    </Button>
+                    <Button v-tooltip.bottom="'Flat Wizard'"
+                            :text="true">
+                        <img src="@/assets/images/flat-wizard.png"
+                             width="28" />
+                    </Button>
+                    <Button v-tooltip.bottom="'INDI'"
+                            :text="true">
+                        <img src="@/assets/images/indi.png"
+                             width="28" />
+                    </Button>
+                    <Button v-tooltip.bottom="'Calculator'"
+                            :text="true">
+                        <img src="@/assets/images/calculator.png"
+                             width="28" />
+                    </Button>
+                    <Button v-tooltip.bottom="'Settings'"
+                            :text="true">
+                        <img src="@/assets/images/settings.png"
+                             width="28" />
+                    </Button>
+                    <Button v-tooltip.bottom="'About'"
+                            :text="true">
+                        <img src="@/assets/images/about.png"
+                             width="28" />
+                    </Button>
+                </div>
+            </Popover>
         </div>
 
         <div class="flex flex-row items-center justify-between gap-3 flex-1">
@@ -159,7 +266,7 @@
                 <TextButton label="Save"
                             icon="content-save"
                             :disabled="!connection.edited?.host || !connection.edited?.name"
-                            @click="connection.saveConnection()" />
+                            @click="connection.save()" />
             </div>
         </div>
     </Dialog>

@@ -22,6 +22,7 @@
 		"!biome.json",
 		"!**/tsconfig*.json",
 		"!LICENSE",
+        "!*.png",
 		"!**/*.md",
 		"!**/*.bmp",
 		"!**/*.ico",

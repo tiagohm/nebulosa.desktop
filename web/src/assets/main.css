@@ -22,8 +22,16 @@ input.p-inputtext {
     @apply max-w-[90vw];
 }
 
+.p-component.p-button.p-button-text.p-button-rounded {
+    @apply aspect-square;
+}
+
 .draggable-region {
 	-webkit-app-region: drag;
+}
+
+.no-draggable-region {
+	-webkit-app-region: no-drag;
 }
 
 .pixelated {

@@ -8,7 +8,6 @@
 <template>
     <Button :text="true"
             :rounded="true"
-            size="small"
             v-bind="$attrs">
         <i :class="['mdi', `mdi-${icon}`]" />
     </Button>
