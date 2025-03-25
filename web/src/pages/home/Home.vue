@@ -4,6 +4,7 @@
         import FloatInputNumber from '@/components/FloatInputNumber.vue'
         import FloatInputText from '@/components/FloatInputText.vue'
         import IconButton from '@/components/IconButton.vue'
+        import ImageViewer from '@/components/ImageViewer.vue'
         import TextButton from '@/components/TextButton.vue'
         import * as api from '@/shared/api'
         import { formatDate } from '@/shared/utils'
@@ -46,7 +47,7 @@
 
     <!-- Toolbar -->
 
-    <div class="w-full flex flex-row items-center justify-between gap-3 p-2">
+    <div class="w-full flex flex-row items-center justify-between gap-3 p-2 relative z-[1] bg-[#121212]">
         <!-- Connection Box -->
 
         <div class="flex flex-row items-center gap-3">
@@ -115,7 +116,7 @@
             <IconButton icon="menu"
                         @click="menuPopover?.toggle($event)"
                         size="large"
-                        v-tooltip.bottom="'Show menu'" />
+                        v-tooltip.bottom="'Menu'" />
 
             <IconButton icon="image-plus"
                         size="large"
@@ -234,6 +235,10 @@
             </div>
         </div>
     </div>
+
+    <!-- Content -->
+
+    <ImageViewer src="https://github.com/dstndstn/astrometry.net/blob/main/demo/apod4.jpg?raw=true" />
 
     <!-- Connection Dialog -->
 

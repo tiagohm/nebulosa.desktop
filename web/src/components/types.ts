@@ -21,3 +21,7 @@ export interface IconButtonProps extends /* @vue-ignore */ Omit<ButtonProps, 'ic
 export interface TextButtonProps extends /* @vue-ignore */ Omit<ButtonProps, 'icon' | 'rounded' | 'text' | 'size'> {
 	icon: string
 }
+
+export interface ImageViewerProps {
+	src: string
+}

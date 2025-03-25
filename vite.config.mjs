@@ -21,6 +21,7 @@ export default defineConfig({
 		outDir: 'dist',
 		emptyOutDir: true,
         chunkSizeWarningLimit: 2048,
+        assetsInlineLimit: 0,
 		rollupOptions: {
 			input: {
 				home: resolve(__dirname, 'home/index.html'),
