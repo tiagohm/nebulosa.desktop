@@ -25,7 +25,7 @@
 		"@biomejs/biome": "latest",
 		"@mdi/font": "7.4.47",
 		"@primeuix/themes": "1.0.0",
-		"@primevue/auto-import-resolver": "4.3.2",
+		"@primevue/auto-import-resolver": "4.3.3",
 		"@tailwindcss/vite": "4.0.15",
 		"@tsconfig/node22": "22",
 		"@types/node": "latest",
